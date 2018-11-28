@@ -1,12 +1,12 @@
 package net.kimleo.promo.facto;
 
-import static net.kimleo.promo.facto.util.Promotion.*;
+import static net.kimleo.promo.facto.util.Promotion.orderReduction;
+import static net.kimleo.promo.facto.util.Promotion.rangeDiscount;
+import static net.kimleo.promo.facto.util.Promotion.singleDiscount;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 import net.kimleo.promo.facto.model.Product;
 import net.kimleo.promo.facto.util.Promotion;
