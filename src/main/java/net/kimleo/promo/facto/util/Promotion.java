@@ -1,7 +1,7 @@
 package net.kimleo.promo.facto.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +23,36 @@ public class Promotion {
   PromotionType type;
 
   Map<String, Object> promotionParameters;
+
+  private Promotion(PromotionScope scope, PromotionType type, Map<String, Object> promotionParameters) {
+    this.scope = scope;
+    this.type = type;
+    this.promotionParameters = promotionParameters;
+  }
+
+  public static Promotion singleDiscount(String id, double discount) {
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("PRODUCT_ID", id);
+    map.put("DISCOUNT", discount);
+
+    return new Promotion(PromotionScope.SINGLE, PromotionType.DISCOUNT, map);
+  }
+
+  public static Promotion orderReduction(double limit, double reduced) {
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("LIMIT", limit);
+    map.put("REDUCED", reduced);
+
+    return new Promotion(PromotionScope.ORDER, PromotionType.REDUCTION, map);
+  }
+
+  public static Promotion rangeDiscount(Set<String> products, double discount) {
+    HashMap<String, Object> map = new HashMap<>();
+    map.put("PROMO_RANGE", products);
+    map.put("DISCOUNT", discount);
+
+    return new Promotion(PromotionScope.RANGE, PromotionType.DISCOUNT, map);
+  }
 
   public double calculate(Product product) {
     double originalTotal = product.getAmount() * product.getPrice();

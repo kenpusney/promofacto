@@ -13,6 +13,11 @@ public class PromotionCalculator {
 
   double orderPromoted = 0;
 
+  public PromotionCalculator(List<Product> products, List<Promotion> promotions) {
+    this.products = products;
+    this.promotions = promotions;
+  }
+
   public double calculateTotal() {
 
     double total = 0;
