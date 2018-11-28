@@ -1,0 +1,16 @@
+
+plugins {
+    id 'java'
+    id 'net.ltgt.apt' version "0.16"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    testCompile 'junit:junit:4.12'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+}
